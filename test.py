@@ -1,8 +1,10 @@
 import unittest
-import calculadoraC as ca
+from T1 import calculadoraC as ca
+
 
 class TestCal(unittest.TestCase):
 
+    # Operaciones Básicas
     def test_sumaC(self):
         self.assertEqual(ca.sumaC(4,3,2,-4),(6,-1))
         self.assertEqual(ca.sumaC(2,2,1,5),(3,7))
@@ -41,6 +43,38 @@ class TestCal(unittest.TestCase):
     def test_faseC(self):
         self.assertEqual(ca.faseC(1, -1), -45.0)
         self.assertEqual(ca.faseC(-1, 1), 135.0)
+
+    # Vectores
+    def test_sumaV(self):
+        self.assertEqual(ca.sumaV([(1,2),(0,-2),(0,-3)],[(2,3),(1,-1),(0,-4)]), [(3, 5), (1, -3), (0, -7)])
+        self.assertEqual(ca.sumaV([(1,0),(0,-1),(1,-1)],[(2,-2),(1,-1),(4,-4)]), [(3, -2), (1, -2), (5, -5)])
+        with self.assertRaises(ValueError):
+            ca.sumaV([(1,0),(0,-1),(1,-1)],[(2,-2),(1,-1)])
+
+    def test_inversaV(self):
+        self.assertEqual(ca.inversaV([(1,2),(0,-2),(0,-3)]), [(-1, -2), (0, 2), (0, 3)])
+        self.assertEqual(ca.inversaV([(1,0),(0,-1),(-3,1)]), [(-1, 0), (0, 1), (3, -1)])
+
+    def test_productoV(self):
+        self.assertEqual(ca.productoV((3,2),[(6,3),(0,0),(5,1),(4,0)]),[(12, 21), (0, 0), (13, 13), (12, 8)])
+        self.assertEqual(ca.productoV((8,-2),[(16,2.3),(0,-7),(6,0),(5,-4)]), [(132.6, -13.6), (-14, -56), (48, -12), (32, -42)])
+
+    # Matrices
+    def test_sumaM(self):
+        self.assertEqual(ca.sumaM([[(1,0),(0,1)],[(0,1),(3,-4)],[(1,0),(-1,-1)]],[[(2,-1),(0,3)],[(0,-2),(5,0)],[(1,0),(0,-1)]]), [[(3, -1), (0, 4)],[(0, -1), (8, -4)], [(2, 0), (-1, -2)]])
+        with self.assertRaises(ValueError):
+            ca.sumaM([[(0,1),(3,-4)],[(1,0),(-1,-1)]],[[(2,-1),(0,3)],[(0,-2),(5,0)],[(1,0),(0,-1)]])
+
+    def test_inversaM(self):
+        self.assertEqual(ca.inversaM([[(1,-1),(0,1),(3,0)],[(5,-4),(6,7),(1,-1)],[(-1,0),(0,-1),(0,9)]]), [[(-1, 1), (0, -1), (-3, 0)], [(-5, 4), (-6, -7), (-1, 1)], [(1, 0), (0, 1), (0, -9)]])
+        with self.assertRaises(ValueError):
+            ca.inversaM([[(1,-1),(0,1),(3,0)],[(5,-4),(6,7),(1,-1)]])
+
+    def test_productoM(self):
+        self.assertEqual(ca.productoM((1,-1),[[(0,1),(-1,1)],[(2,1),(-1,2)]]), [[(1, 1), (0, 2)], [(3, -1), (1, 3)]])
+        self.assertEqual(ca.productoM((3,0),[[(1,-2),(-1,1)],[(-2,1),(-1,2)]]), [[(3, -6), (-3, 3)], [(-6, 3), (-3, 6)]])
+
+
 
 if __name__ == '__main__':
     unittest.main()
