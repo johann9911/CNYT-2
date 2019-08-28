@@ -171,18 +171,3 @@ def conjugadaM(M):
 def adjuntaM(M):
 
     return traspuestaM(conjugadaM(M))
-
-
-'''def productoM2(M, M2):
-    res = [] # Contenedor de la respuesta
-    for fil in range(len(M)):
-        for j in range (len(M2)):
-            (M[i][j] * M2[i][j]) + (M[i][j+1] * M2[i+1][j]) 
-    return res'''
-
-#print(traspuestaM([[1,2],[3,4]]))
-#print(conjugadaM([[(1,2),(-3,5)],[(3,4),(-1,-1)]]))
-#print(traspuestaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]))
-#print(conjugadaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]))
-#print(adjuntaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]))
-#print(inversaM([[(-3,1),(4,1)], [(-2,1),(2,1)],[(0,-1),(3,1)]]))
