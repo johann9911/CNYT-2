@@ -1,8 +1,18 @@
 import math
 
-gradosPC = math.pi / 180 #Conversión de grados a radianes
-gradosCP = 180 / math.pi  # Conversión de radianes a grados
+gradosPC = math.pi / 180 #Conversion de grados a radianes
+gradosCP = 180 / math.pi  # Conversion de radianes a grados
 
+#Funciones adicionales
+def inversa(a,b):
+    # inversa del # real
+    b, a = conjugadoC(b, a)
+    # inversa de # imaginario
+    a, b = conjugadoC(a, b)
+    return (a, b)
+
+
+#Funciones principales
 def sumaC(a,b,c,d):
     z1 = a + c
     z2 = b + d
@@ -88,19 +98,11 @@ def faseC(x, y):
 def sumaV(u,v):
     res = [] #Contenedor de la respuesta
     if len(u) != len(v):
-        raise ValueError('A y B deben tener el mismo tamaño')
+        raise ValueError('A y B deben tener el mismo tamano')
     else:
         for fil in range(len(u)):
            res.append(sumaC(u[fil][0],u[fil][1], v[fil][0], v[fil][1]))
     return res
-
-def inversa(a,b):
-    # inversa del # real
-    b, a = conjugadoC(b, a)
-    # inversa de # imaginario
-    a, b = conjugadoC(a, b)
-    return (a, b)
-
 
 def inversaV(V):
     res = [] # Contenedor de la respuesta
@@ -118,10 +120,10 @@ def productoV(r,V):
 
 #Matrices
 
-def sumaM(A,B): #Matrices deben tener el mismo tamaño
+def sumaM(A,B): #Matrices deben tener el mismo tamano
     res = [] # Contenedor de la respuesta
     if len(A) != len(B) or len(A[0]) != len(B[0]):
-        raise ValueError('A y B deben tener la misma dimensión')
+        raise ValueError('A y B deben tener la misma dimension')
     else:
         for fil in range(len(A)):
             subres = [] #Sub contenedor
@@ -132,14 +134,11 @@ def sumaM(A,B): #Matrices deben tener el mismo tamaño
 
 def inversaM(M):
     res = []  # Contenedor de la respuesta
-    if len(M) != len(M[0]):
-        raise ValueError('M debe ser una matriz cuadrada.')
-    else:
-        for fil in range(len(M)):
-            subres = [] #Sub contenedor
-            for col in range(len(M[0])):
-                subres.append(inversa(M[fil][col][0], M[fil][col][1]))
-            res.append(subres)
+    for fil in range(len(M)):
+        subres = [] #Sub contenedor
+        for col in range(len(M[0])):
+            subres.append(inversa(M[fil][col][0], M[fil][col][1]))
+        res.append(subres)
     return res
 
 def productoM(c, M):
@@ -150,3 +149,40 @@ def productoM(c, M):
             subres.append(productoC(c[0], c[1], M[fil][col][0], M[fil][col][1]))
         res.append(subres)
     return res
+
+def traspuestaM(M):
+    res = []  # Contenedor de la respuesta
+    for i in range(len(M[0])):
+        subres = []
+        for j in range(len(M)):
+            subres.append(M[j][i])
+        res.append(subres)
+    return  res
+
+def conjugadaM(M):
+    res = []  # Contenedor de la respuesta
+    for i in range(len(M[0])):
+        subres = []
+        for j in range(len(M)):
+            subres.append(conjugadoC(M[i][j][0], M[i][j][1]))
+        res.append(subres)
+    return  res
+
+def adjuntaM(M):
+
+    return traspuestaM(conjugadaM(M))
+
+
+'''def productoM2(M, M2):
+    res = [] # Contenedor de la respuesta
+    for fil in range(len(M)):
+        for j in range (len(M2)):
+            (M[i][j] * M2[i][j]) + (M[i][j+1] * M2[i+1][j]) 
+    return res'''
+
+#print(traspuestaM([[1,2],[3,4]]))
+#print(conjugadaM([[(1,2),(-3,5)],[(3,4),(-1,-1)]]))
+#print(traspuestaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]))
+#print(conjugadaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]))
+#print(adjuntaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]))
+#print(inversaM([[(-3,1),(4,1)], [(-2,1),(2,1)],[(0,-1),(3,1)]]))

@@ -4,7 +4,7 @@ from T1 import calculadoraC as ca
 
 class TestCal(unittest.TestCase):
 
-    # Operaciones Básicas
+    # Operaciones Basicas
     def test_sumaC(self):
         self.assertEqual(ca.sumaC(4,3,2,-4),(6,-1))
         self.assertEqual(ca.sumaC(2,2,1,5),(3,7))
@@ -67,14 +67,19 @@ class TestCal(unittest.TestCase):
 
     def test_inversaM(self):
         self.assertEqual(ca.inversaM([[(1,-1),(0,1),(3,0)],[(5,-4),(6,7),(1,-1)],[(-1,0),(0,-1),(0,9)]]), [[(-1, 1), (0, -1), (-3, 0)], [(-5, 4), (-6, -7), (-1, 1)], [(1, 0), (0, 1), (0, -9)]])
-        with self.assertRaises(ValueError):
-            ca.inversaM([[(1,-1),(0,1),(3,0)],[(5,-4),(6,7),(1,-1)]])
+        self.assertEqual(ca.inversaM([[(-3,1),(4,1)], [(-2,1),(2,1)],[(0,-1),(3,1)]]), [[(3, -1), (-4, -1)], [(2, -1), (-2, -1)], [(0, 1), (-3, -1)]])
 
     def test_productoM(self):
         self.assertEqual(ca.productoM((1,-1),[[(0,1),(-1,1)],[(2,1),(-1,2)]]), [[(1, 1), (0, 2)], [(3, -1), (1, 3)]])
         self.assertEqual(ca.productoM((3,0),[[(1,-2),(-1,1)],[(-2,1),(-1,2)]]), [[(3, -6), (-3, 3)], [(-6, 3), (-3, 6)]])
 
+    def test_traspuestaM(self):
+        self.assertEqual(ca.traspuestaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]), [[(6, -3), (0, 0), (1, 0)], [(2, 12), (5, 2.1), (2, 5)], [(0, -19), (17, 0), (3, -4.5)]])
+        self.assertEqual(ca.traspuestaM([[1,2],[3,4]]), [[1, 3], [2, 4]])
 
+    def test_conjugadaM(self):
+        self.assertEqual(ca.conjugadaM([[(6,-3),(2,12),(0,-19)], [(0,0),(5,2.1),(17,0)], [(1,0),(2,5),(3,-4.5)]]), [[(6, 3), (2, -12), (0, 19)], [(0, 0), (5, -2.1), (17, 0)], [(1, 0), (2, -5), (3, 4.5)]])
+        self.assertEqual(ca.conjugadaM([[(1,2),(-3,5)],[(3,4),(-1,-1)]]), [[(1, -2), (-3, -5)], [(3, -4), (-1, 1)]])
 
 if __name__ == '__main__':
     unittest.main()
