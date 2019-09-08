@@ -38,7 +38,7 @@ Para matrices:
 Como funciona:
 
 Se hacen una serie de pruebas, donde verificamos los resultados esperados, con cada una de las funciones.
-Ademas de exponer cada una de las operaciones, se muestra cada función y en las pruebas la validez del retorno en cada una de las funciones, para los valores dados.
+Ademas de exponer cada una de las operaciones, se muestra cada función y en las pruebas "test.py" la validez del retorno en cada una de las funciones, para los valores dados.
 
 -----------------------------------------
 Entorno:
