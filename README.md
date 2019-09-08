@@ -44,7 +44,7 @@ Si desea acceder a través del índice del contenido de "CNYT.ipynb", de forma i
 
 1. Descargue Anaconda en el siguiente enlace: https://www.anaconda.com/downloads
 2. Una vez instalado, acceda a "Jupyter Notebook"
-3. Descargue o Clone el repositorio, y lo almacena en "Downloads"
+3. Descargue o Clone el repositorio, y guardelo en "Downloads"
 4. Y por ultimo, una vez abra "Jupyter Notebook" ira a --> Downloads --> CNYT.ipynb. Lo dirigirá al archivo en línea. Podrá manipularlo, y navegar a través de él, con ayuda del índice de contenido.
 
 -----------------------------------------
